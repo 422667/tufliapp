@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container">
+	
+
+	
+	<div th:insert="fragments/commonui :: userheader"></div>
+	
+		<div class="card">
+
+			<div class="card-header bg-primary text-white text-center">
+				<h3>PROJECT SYMPHONY TEST SCENARIO EDIT PAGE!</h3>
+			</div>
+
+			<div class="card-body">
+				<form id="scenRegForm" th:action="@{/testscenario/update}"
+					method="POST" th:object="${testScenario}">
+
+					<div class="row">
+						<div class="col-3">
+							<label>TestScenario S.No</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="*{id}" class="form-control" />
+						</div>
+
+					</div>
+
+					<div class="row">
+						<div class="col-3">
+							<label>Test Case ID</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="*{testcaseid}" class="form-control"
+							 />
+						</div>
+
+					</div>
+
+					<div class="row">
+						<div class="col-3">
+							<label>Product Family</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="*{productFamily}"
+								class="form-control" />
+						</div>
+
+					</div>
+
+					<div class="row">
+						<div class="col-3">
+							<label>Product Offer</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="*{productOffer}"
+								class="form-control" />
+						</div>
+						<div class="col-5">
+							<span id="productOfferError"></span>
+						</div>
+					</div>
+
+
+					<div class="row">
+						<div class="col-3">
+							<label>VAS</label>
+						</div>
+						<div class="col-4">
+							<input type="radio" th:field="*{VAS}"
+								value="Class of Service Upgrade" /> Class of Service Upgrade <input
+								type="radio" th:field="*{VAS}" value="Flexi Cos"  /> Flexi Cos <input
+								type="radio" th:field="*{VAS}" value="NA" /> NA
+						</div>
+						<div class="col-5">
+							<span id="VASError"></span>
+						</div>
+					</div>
+<div class="row">
+						<div class="col-3">
+							<label>BOD</label>
+						</div>
+						<div class="col-4">
+							<input th:field="*{BOD}" class="form-control">
+								
+								
+								
+							</input>
+							</div>
+							<div class="col-5">
+								<span id="BODError"></span>
+							</div>
+						</div>
+						
+
+					<div class="row">
+						<div class="col-3">
+							<label>Child Offer</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="*{childOffer}" class="form-control"
+								readonly />
+						</div>
+						<div class="col-5">
+							<span id="childOfferError"></span>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-3">
+							<label>Topology</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="*{topology}" class="form-control"
+								readonly />
+						</div>
+						<div class="col-5">
+							<span id="topologyError"></span>
+						</div>
+					</div>
+
+
+					<div class="row">
+						<div class="col-3">
+							<label>IP Version</label>
+						</div>
+						<div class="col-4">
+							<input type="radio" th:field="*{ipVersion}" value="IPV4" /> IPV4
+							<input type="radio" th:field="*{ipVersion}" value="IPV6" /> IPV6
+							<input type="radio" th:field="*{ipVersion}" value="NA" /> NA
+						</div>
+						<div class="col-5">
+							<span id="ipVersionError"></span>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-3">
+							<label>RoutingProtocol</label>
+						</div>
+						<div class="col-4">
+							<input type="radio" th:field="*{routingProtocol}" value="STATIC" />
+							STATIC <input type="radio" th:field="*{routingProtocol}"
+								value="BGP" /> BGP <input type="radio"
+								th:field="*{routingProtocol}" value="NA" /> NA
+						</div>
+						<div class="col-5">
+							<span id="routingProtocolError"></span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3">
+							<label>Order Number</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="*{Orderno}" class="form-control" />
+						</div>
+						<div class="col-5">
+							<span id="OrdernoError"></span>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-3">
+							<label>CRM To BRM Verification</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="*{CRMtoBRMVerification}"
+								class="form-control" />
+						</div>
+						<div class="col-5">
+							<span id="CRMtoBRMVerificationError"></span>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-3">
+							<label>Jira Issues</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="*{jiraids}" class="form-control" />
+						</div>
+						<div class="col-5">
+							<span id="jiraidsError"></span>
+						</div>
+					</div>
+
+
+					<div class="row">
+						<div class="col-3">
+							<label>Test Case Status</label>
+						</div>
+						<div class="col-4">
+							<select th:field="*{Status}" class="form-control">
+								<option value="PASS">PASS</option>
+								<option value="FAIL">FAIL</option>
+
+							</select>
+						</div>
+						<div class="col-5">
+							<span id="statusError"></span>
+						</div>
+					</div>
+
+					<input type="submit" value="Update Test Scenario"
+						class="btn btn-success" />
+				</form>
+
+			</div>
+			<!-- Card Body end -->
+			<div class="card-footer alert alert-success" th:if="${message!=null}">
+				<span th:text="${message}"></span>
+			</div>
+
+		</div>
+		<!-- card end -->
+
+	</div>
+	<!-- container end -->
+	
+</body>
+</html>

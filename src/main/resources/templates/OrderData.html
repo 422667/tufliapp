@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+
+<meta charset="ISO-8859-1">
+<style>
+.table-hover > tr:hover > td,
+.table-hover > tr:hover > th {
+    background-color: #CFF5FF;
+}
+</style>
+
+</head>
+
+<body>
+	<div class="container">
+		
+
+		<div th:insert="fragments/commonui :: userheader"></div>
+			<div class="card">
+
+		<div class="card-header bg-info text-white text-center"
+			style="height: 6rem">
+
+			<h3 style="font-size: 20px">PROJECT SYMPHONY TEST AUTOMATION
+				REPORT</h3>
+
+			<div style="display: flex">
+
+				<a style="width: 150px; border: 3px solid #73AD21;"
+					th:href="@{/testscenario/excel}" class="btn btn-dark">Excel
+					Export</a> <a style="width: 180px; border: 3px solid #73AD21;"
+					th:href="@{/testscenario/register}" class="btn btn-dark">Add
+					Test Scenario?</a> <a style="width: 150px; border: 3px solid #73AD21;"
+					th:href="@{/testscenario/charts}" class="btn btn-dark">Graphical
+					Reports</a> <a style="width: 150px; border: 3px solid #73AD21;"
+					th:href="@{/testscenario/documents/show}" class="btn btn-dark">Documents</a>
+					<a style="width: 150px; border: 3px solid #73AD21;"
+					th:href="@{/testscenario/orders/show}" class="btn btn-dark">Orders</a>
+
+
+			</div>
+
+
+		</div>
+
+
+
+
+		<div class="card-body">
+
+<form th:action="@{/testscenario/all}">
+			Filter: <input type="text" name="keyword" id="keyword" size="50"
+				th:value="${keyword}" /> &nbsp; <input type="submit"
+				value="Search" /> &nbsp; <input type="button" value="Clear"
+				id="btnClear" onclick="clearSearch()" />
+		</form>
+		
+		<hr>
+		
+
+			<table class="card-body table table-hover table-responsive" style="overscroll-behavior-x: auto"
+				border="5">
+				<tr>
+					<th style="font-size: 10px">S.No</th>
+					<th style="font-size: 10px">TESTCASE ID</th>
+					<th style="font-size: 10px">PRODUCT FAMILY</th>
+					<th style="font-size: 10px">PRODUCT OFFER</th>
+					<th style="font-size: 10px">VAS</th>
+					<th style="font-size: 10px">BOD</th>
+					<th style="font-size: 10px">CHILD OFFER</th>
+					<th style="font-size: 10px">TOPOLOGY</th>
+					<th style="font-size: 10px">IP VERSION</th>
+					<th style="font-size: 10px">ROUTING PROTOCOL</th>
+					<th style="font-size: 10px">ORDER NUMBER</th>
+					<th style="font-size: 10px">CRM TO BRM VERIFICATION</th>
+					<th style="font-size: 10px">JIRA ISSUES</th>
+					<th style="font-size: 10px">STATUS</th>
+
+					<th style="font-size: 10px">OPERATION</th>
+				</tr>
+				<!-- for(ShipmentType ob:list) {} -->
+				<tr th:each="ob:${page.getContent}">
+					<td style="font-size: 10px" th:text="${ob.id}"></td>
+					<td style="font-size: 10px" th:text="${ob.testcaseid}"></td>
+					<td style="font-size: 10px" th:text="${ob.productFamily}"></td>
+					<td style="font-size: 10px" th:text="${ob.productOffer}"></td>
+					<td style="font-size: 10px" th:text="${ob.VAS}"></td>
+					<td style="font-size: 10px" th:text="${ob.BOD}"></td>
+					<td style="font-size: 10px" th:text="${ob.childOffer}"></td>
+					<td style="font-size: 10px" th:text="${ob.topology}"></td>
+					<td style="font-size: 10px" th:text="${ob.ipVersion}"></td>
+					<td style="font-size: 10px" th:text="${ob.routingProtocol}"></td>
+
+
+
+
+					<td style="font-size: 10px"><a target="_blank" id="order"
+						th:text="${ob.Orderno}"
+						th:href="@{https://staffuat.sptel.int/staff/order/track/(${ob.Orderno})}">${ob.Orderno}</a></td>
+
+
+					<td style="font-size: 10px" th:text="${ob.CRMtoBRMVerification}"></td>
+					<td style="font-size: 10px" th:text="${ob.jiraids}"></td>
+					<td style="font-size: 10px" th:text="${ob.Status}"></td>
+					<td style="font-size: 10px"><a style="font-size: 10px"
+						th:href="@{/testscenario/delete(id=${ob.id})}"
+						class="btn btn-danger"> DELETE </a> | <a style="font-size: 10px"
+						th:href="@{/testscenario/edit(id=${ob.id})}"
+						class="btn btn-warning"> EDIT </a></td>
+				</tr>
+			</table>
+
+
+	
+		</div>
+		<!-- card end -->
+
+	</div>
+	<!-- container end -->
+		
+
+		<nav aria-label="Page navigation ">
+			<ul class="pagination justify-content-center">
+
+				<li class="page-item" th:if="${!page.isFirst()}"><a
+					class="page-link" th:href="@{/testscenario/all(page=0)}">First</a></li>
+
+				<li class="page-item" th:if="${page.hasPrevious()}"><a
+					class="page-link"
+					th:href="@{/testscenario/all(page=${page.number-1})}">Previous</a>
+				</li>
+
+				<th:block th:each="i:${#numbers.sequence(0,page.totalPages-1)}">
+					<li class="page-item"><a class="page-link"
+						th:href="@{/testscenario/all(page=${i})}">[[${i} + 1]]</a></li>
+				</th:block>
+
+
+				<li class="page-item" th:if="${page.hasNext()}"><a
+					class="page-link"
+					th:href="@{/testscenario/all(page=${page.number+1})}">Next</a></li>
+
+				<li class="page-item" th:if="${!page.isLast()}"><a
+					class="page-link"
+					th:href="@{/testscenario/all(page=${page.totalPages-1})}">Last</a></li>
+			</ul>
+		</nav>
+		<!-- pagination ends -->
+
+		<hr />
+		<!-- pagination starts -->
+
+
+	</div>
+
+
+	<script type="text/javascript">
+	
+	
+	function clearSearch() {
+$("#keyword").val("");
+        window.location = "[[@{/testscenario/all}]]";
+    }
+	$(document).ready(function() {
+	
+
+
+    
+
+    
+$("#order").click(function() {
+  jQuery("#order").each(function() {
+  jQuery(this).attr("href", jQuery(this).attr("href").replace("?",""));
+
+ });
+ });
+ });
+</script>
+</body>
+</html>

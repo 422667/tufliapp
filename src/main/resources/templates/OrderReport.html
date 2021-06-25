@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+
+<meta charset="ISO-8859-1">
+<style>
+.table-hover > tr:hover > td,
+.table-hover > tr:hover > th {
+    background-color: #CFF5FF;
+}
+</style>
+
+</head>
+
+<body>
+	<div class="container">
+		
+
+		<div th:insert="fragments/commonui :: userheader"></div>
+			<div class="card">
+
+		<div class="card-header bg-info text-white text-center"
+			style="height: 6rem">
+
+			<h3 style="font-size: 20px">UAT ORDER
+				REPORT</h3>
+
+			<div style="display: flex">
+
+				<a style="width: 150px; border: 3px solid #73AD21;"
+					th:href="@{/testscenario/excel}" class="btn btn-dark">Excel
+					Export</a> <a style="width: 180px; border: 3px solid #73AD21;"
+					th:href="@{/testscenario/register}" class="btn btn-dark">Add
+					Test Scenario?</a> <a style="width: 150px; border: 3px solid #73AD21;"
+					th:href="@{/testscenario/charts}" class="btn btn-dark">Graphical
+					Reports</a> <a style="width: 150px; border: 3px solid #73AD21;"
+					th:href="@{/testscenario/documents/show}" class="btn btn-dark">Documents</a>
+
+
+			</div>
+
+
+		</div>
+
+
+
+
+		<div class="card-body">
+
+<form th:action="@{/testscenario/orders/show}">
+			Filter: <input type="text" name="keyword" id="keyword" size="50"
+				th:value="${keyword}" /> &nbsp; <input type="submit"
+				value="Search" /> &nbsp; <input type="button" value="Clear"
+				id="btnClear" onclick="clearSearch()" />
+		</form>
+		
+		
+		<hr>
+		
+
+			<table class="card-body table table-hover table-responsive" style="overscroll-behavior-x: auto"
+				border="5">
+				<tr>
+
+					<th style="font-size: 10px">CODE</th>
+					<th style="font-size: 10px">CUSTOMER ID</th>
+					<th style="font-size: 10px">ORDER TYPE</th>
+					<th style="font-size: 10px">STATUS</th>
+					<th style="font-size: 10px">ITEM NAME</th>
+					<th style="font-size: 10px">SERVICE ID</th>
+					<th style="font-size: 10px">CREATED BY</th>
+					<th style="font-size: 10px">CREATED TIME</th>
+				
+				</tr>
+				<!-- for(ShipmentType ob:list) {} -->
+				<tr th:each="ob:${list}">
+				<td style="font-size: 10px" th:text="${ob[0]}"></td>
+					<td style="font-size: 10px" th:text="${ob[1]}"></td>
+					<td style="font-size: 10px" th:text="${ob[2]}"></td>
+					<td style="font-size: 10px" th:text="${ob[3]}"></td>
+					<td style="font-size: 10px" th:text="${ob[4]}"></td>
+					<td style="font-size: 10px" th:text="${ob[5]}"></td>
+					<td style="font-size: 10px" th:text="${ob[6]}"></td>
+					<td style="font-size: 10px" th:text="${ob[7]}"></td>
+				
+				</tr>
+			</table>
+
+
+	
+		</div>
+		<!-- card end -->
+
+	</div>
+	<!-- container end -->
+		
+
+		
+
+
+	</div>
+	
+	
+<!-- <nav aria-label="Page navigation" class="table-responsive mb-2" >
+
+
+			<ul style="width:344px;height:36px;"class="pagination justify-content-center pagination mb-0">
+
+				<li class="page-item" th:if="${!page.isFirst()}"><a
+					class="page-link" th:href="@{/testscenario/orders/show(page=0)}">First</a></li>
+
+				<li class="page-item" th:if="${page.hasPrevious()}"><a
+					class="page-link"
+					th:href="@{/testscenario/orders/show(page=${page.number-1})}">Previous</a>
+				</li>
+
+				<th:block th:each="i:${#numbers.sequence(0,page.totalPages-1)}">
+					<li class="page-item"><a class="page-link"
+						th:href="@{/testscenario/orders/show(page=${i})}">[[${i} + 1]]</a></li>
+				</th:block>
+				<li class="page-item" th:if="${page.hasNext()}"><a
+					class="page-link"
+					th:href="@{/testscenario/orders/show(page=${page.number+1})}">Next</a></li>
+
+				<li class="page-item" th:if="${!page.isLast()}"><a
+					class="page-link"
+					th:href="@{/testscenario/orders/show(page=${page.totalPages-1})}">Last</a></li>
+			</ul>
+	
+		</nav>
+	 -->
+
+		<hr />
+
+
+</div>
+
+	<script type="text/javascript">
+	
+	
+	function clearSearch() {
+$("#keyword").val("");
+        window.location = "[[@{/testscenario/orders/show}]]";
+    }
+</script>
+
+
+	
+</body>
+</html>

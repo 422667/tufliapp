@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+
+<meta charset="ISO-8859-1">
+
+</head>
+<body>
+
+
+		
+		<div class="container">
+	<div th:insert="fragments/commonui :: userheader"></div>
+	
+		<div class="card">
+
+			<div class="card-header bg-info text-white text-center">
+				<h3>PROJECT SYMPHONY TEST SCENARIO REGISTER PAGE!</h3>
+			</div>
+
+			<div class="card-body">
+				<!-- Form id="" -->
+				<form id="scenRegForm" th:action="@{/testscenario/save}"
+					method="POST">
+					<div class="row">
+						<div class="col-3">
+							<label>Text Case ID</label>
+						</div>
+						<div class="col-4">
+							<input type="text" name="testcaseid" id="testcaseid"
+								class="form-control" />
+						</div>
+						<div class="col-5">
+							<span id="testcaseidError"></span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3">
+							<label>Product Family</label>
+						</div>
+						<div class="col-4">
+							<select name="productFamily" id="productFamily"
+								class="form-control">
+								<option value="" selected="selected">-SELECT-</option>
+								
+							</select>
+						</div>
+						<div class="col-5">
+							<span id="productFamilyError"></span>
+						</div>
+					</div>
+					
+				
+					<div class="row">
+						<div class="col-3">
+							<label>Product Offer</label>
+						</div>
+						<div class="col-4">
+							<select name="productOffer" id="productOffer"
+								class="form-control">
+								<option value="">-SELECT-</option>
+							
+							</select>
+						</div>
+						<div class="col-5">
+							<span id="productOfferError"></span>
+						</div>
+					</div>
+					
+						
+					
+					<div class="row">
+						<div class="col-3">
+							<label>Child Offer</label>
+						</div>
+						<div class="col-4">
+							<select name="childOffer" id="childOffer" class="form-control">
+								<option value="">-SELECT-</option>
+							</select>
+							</div>
+							<div class="col-5">
+								<span id="childOfferError"></span>
+							</div>
+						</div>
+							<div class="row">
+							<div class="col-3">
+								<label>Topology</label>
+							</div>
+							<div class="col-4">
+								<input type="text" name="topology" id="topology"
+									class="form-control" />
+							</div>
+							<div class="col-5">
+								<span id="topologyError"></span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>VAS</label>
+							</div>
+							<div class="col-4">
+								<input type="radio" name="VAS" value="Class of Service Upgrade" /> Class of Service Upgrade <input
+									type="radio" name="VAS" value="Flexi Cos" /> Flexi Cos <input
+									type="radio" name="VAS" value="NA" /> NA
+							</div>
+							<div class="col-5">
+								<span id="VASError"></span>
+							</div>
+						</div>
+						
+	<div class="row">
+						<div class="col-3">
+							<label>BOD</label>
+						</div>
+						<div class="col-4">
+							<select name="BOD" id="BOD" class="form-control">
+								<option value="">-SELECT-</option>
+								<option value="Bandwidth on Demand">Bandwidth on Demand</option>
+								<option value="Burstable Bandwidth on Demand">Burstable Bandwidth on Demand</option>
+								
+								
+							</select>
+							</div>
+							<div class="col-5">
+								<span id="BODError"></span>
+							</div>
+						</div>
+						
+
+
+						<div class="row">
+							<div class="col-3">
+								<label>IP Version</label>
+							</div>
+							<div class="col-4">
+								<input type="radio" name="ipVersion" value="IPV4" /> IPV4 <input
+									type="radio" name="ipVersion" value="IPV6" /> IPV6 <input
+									type="radio" name="ipVersion" value="NA" /> NA
+							</div>
+							<div class="col-5">
+								<span id="ipVersionError"></span>
+							</div>
+						</div>
+
+
+
+						<div class="row">
+							<div class="col-3">
+								<label>RoutingProtocol</label>
+							</div>
+							<div class="col-4">
+								<input type="radio" name="routingProtocol" value="STATIC" />
+								STATIC <input type="radio" name="routingProtocol" value="BGP" />
+								BGP <input type="radio" name="routingProtocol" value="NA" /> NA
+							</div>
+							<div class="col-5">
+								<span id="routingProtocolError"></span>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-3">
+								<label>Order Number</label>
+							</div>
+							<div class="col-4">
+								<input type="text" name="Orderno" id="Orderno"
+									class="form-control" value="ORDER" />
+							</div>
+							<div class="col-5">
+								<span id="OrdernoError"></span>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-3">
+								<label>CRM To BRM Verification</label>
+							</div>
+							<div class="col-4">
+								<input type="text" name="CRMtoBRMVerification"
+									id="CRMtoBRMVerification" value="Not Started"
+									class="form-control" />
+							</div>
+							<div class="col-5">
+								<span id="CRMtoBRMVerificationError"></span>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-3">
+								<label>Jira Issues</label>
+							</div>
+							<div class="col-4">
+								<input type="text" name="jiraids" id="jiraids" value="Jira id"
+									class="form-control" />
+							</div>
+							<div class="col-5">
+								<span id="jiraidsError"></span>
+							</div>
+						</div>
+
+<div class="row">
+							<div class="col-3">
+								<label>Test Case Status</label>
+							</div>
+					<div class="col-4">
+							<select name="Status" id="Status"
+								class="form-control">
+								<option value="-SELECT-">-SELECT-</option>
+								<option value="PASS">PASS</option>
+								<option value="FAIL">FAIL</option>
+								
+							</select>
+						</div>
+						<div class="col-5">
+							<span id="statusError"></span>
+						</div>
+					</div>
+					
+						<input style="width: 180px;border: 3px solid #73AD21;"type="submit" value="Add New Scenario"
+							class="btn btn-info" />
+				</form>
+
+			</div>
+			<!-- Card Body end -->
+
+			<div class="card-footer alert alert-success" th:if="${message!=null}">
+				<span th:text="${message}"></span>
+			</div>
+
+		</div>
+		<!-- card end -->
+
+	</div>
+	<!-- container end -->
+	<script>$(document).ready(function() {
+	//1. hide error section
+	$("#productOfferError").hide();
+	$("#testcaseidError").hide();
+	$("#topologyError").hide();
+	$("#ipVersionError").hide();
+	$("#routingProtocolError").hide();
+	$("#productFamilyError").hide();
+	$("#productOfferError").hide();
+	$("#childOfferError").hide();
+	
+	
+
+
+
+	//2. define error variables
+	var productOfferError = false;
+	var testcaseidError = false;
+	var topologyError = false;
+	var ipVersionError = false;
+	var routingProtocolError = false;
+	var productFamilyError = false;
+	var productOfferError = false;
+	var childOfferError = false;
+
+
+var L1_productFamily = {
+    "MetroE": {
+        "Standard MetroE ATA Burstable Rate": ["Standard MetroE ATA Burstable Rate with Diverse Path","Cloud Connect Fixed Rate"],
+        "Standard MetroE ATA Fixed Rate": ["Standard MetroE ATA Fixed Rate with Diverse Path", "Cloud Connect Fixed Rate"],
+        "Standard MetroE ATA Burstable Rate with Protected Path": ["Cloud Connect Fixed Rate"],
+        "Standard MetroE ATA Fixed Rate with Protected Path": ["Cloud Connect Fixed Rate"],
+        "Standard MetroE PTMP Burstable Rate": ["Standard MetroE PTMP Burstable Rate with Diverse Path", "Cloud Connect Fixed Rate"],
+        "Standard MetroE PTMP Fixed Rate": ["Standard MetroE PTMP Fixed Rate with Diverse Path", "Cloud Connect Fixed Rate"],
+        "Standard MetroE PTMP Burstable Rate with Protected Path": ["Standard MetroE PTMP Burstable Rate with Diverse Path", "Cloud Connect Fixed Rate"],
+        "Standard MetroE PTMP Fixed Rate with Protected Path": ["Standard MetroE PTMP Fixed Rate with Diverse Path", "Cloud Connect Fixed Rate"],
+        "Standard MetroE PTP Burstable Rate": ["Standard MetroE PTP Burstable Rate with Diverse Path"],
+        "Standard MetroE PTP Fixed Rate": ["Standard MetroE PTP Fixed Rate with Diverse Path"],
+        "Standard MetroE PTP Burstable Rate": ["Standard MetroE PTP Burstable Rate with Diverse Path"],
+        "Standard MetroE PTP Fixed Rate": ["Standard MetroE PTP Fixed Rate with Diverse Path"],
+        "Standard MetroE PTP Burstable Rate with Protected Path": ["NA"],
+        "Standard MetroE PTP Fixed Rate with Protected Path": ["NA"],
+        "MetroELite PTMP Burstable Rate":["Cloud Connect Fixed Rate"],
+        "MetroELite PTP Burstable Rate":["Cloud Connect Fixed Rate"],
+        "MetroELite ATA Burstable Rate":["Cloud Connect Fixed Rate"],
+        "MetroELite PTMP Fixed Rate":["Cloud Connect Fixed Rate"],
+        "MetroELite PTP Fixed Rate":["Cloud Connect Fixed Rate"],
+        "MetroELite ATA Fixed Rate":["Cloud Connect Fixed Rate"]
+	},
+	
+		"Enterprise Internet": {
+        "Enterprise Internet 200Mbps by IPVPN": ["NA"],
+        "Enterprise Internet 50Mbps by GPON": ["NA"],
+        "Enterprise Internet 50Mbps by IPVPN": ["NA"],
+        "Enterprise Internet Lite 500Mbps": ["NA"],
+        "Enterprise Internet Burstable Rate by IPVPN": ["NA"],
+        "Enterprise Internet Burstable Rate by IPVPN with Auto Backup Port": ["NA"],
+        "Enterprise Internet Burstable Rate by MetroE": ["NA"],
+        "Enterprise Internet Burstable Rate by MetroE with Auto Backup Port": ["NA"],
+        "Enterprise Internet Fixed Rate by IPVPN": ["NA"],
+        "Enterprise Internet Fixed Rate by IPVPN with Auto Backup Port": ["NA"],
+        "Enterprise Internet Fixed Rate by MetroE": ["NA"],
+        "Enterprise Internet Fixed Rate by MetroE with Auto Backup Port": ["NA"],
+        "Enterprise Internet Lite": ["NA"],
+        "Enterprise Internet Burstable Rate by GPON ": ["NA"],
+        "Enterprise Internet Fixed Rate by GPON ": ["NA"],
+    },
+    
+	
+	
+	"IPVPN": {
+        "Standard IPVPN Fixed Rate": ["Diverse Path IPVPN Fixed Rate","Cloud Connect Fixed Rate"],
+        "Standard IPVPN Burstable Rate": ["Diverse Path IPVPN Burstable Rate", "Cloud Connect Fixed Rate"],
+        "Standard IPVPN Fixed Rate with Auto Backup Port": ["Cloud Connect Fixed Rate"],
+        "Standard IPVPN Burstable Rate with Auto Backup Port": ["Cloud Connect Fixed Rate"],
+        "Standard IPVPN Burstable Rate by GPON": ["Cloud Connect Fixed Rate"],
+        "Standard IPVPN Fixed Rate by GPON ": ["Cloud Connect Fixed Rate"]
+    },
+    
+    "DCI": {
+    "Standard DCI 10Gbps": ["NA"],
+    "Standard DCI (100GE)": ["NA"],
+    "Standard DCI (10GE)": ["NA"],
+    "Standard DCI (STM64)": ["NA"],
+    "Standard DCI (GE)": ["NA"],
+    "Standard DCI (STM16)": ["NA"],
+    },
+    
+"IoT": {
+    "IoT Central Manager": ["IoT MEC","IoT Edge - Shared Gateway","IoT Analytics","IoT Edge - Dedicated Gateway","IoT Edge - BYO Gateway","IoT Backhaul Connectivity Fixed Rate",
+    "IoT Backhaul Connectivity Fixed Rate","IoT Backhaul Connectivity Burstable Rate","Enterprise Internet Fixed Rate by IPVPN",
+    "Enterprise Internet Burstable Rate by MetroE","Enterprise Internet Burstable Rate by IPVPN","Enterprise Internet Fixed Rate by MetroE"]
+   
+    },
+   
+}
+
+window.onload = function() {
+  var product_Family = document.getElementById("productFamily");
+  var product_Offer = document.getElementById("productOffer");
+  var child_Offer = document.getElementById("childOffer");
+  for (var x in L1_productFamily) {
+    product_Family.options[product_Family.options.length] = new Option(x, x);
+  }
+
+	product_Family.onchange = function() {
+	product_Offer.length=1;
+	child_Offer.length=1;
+	for (var y in L1_productFamily[this.value]) {
+		product_Offer.options[product_Offer.options.length] = new Option(y, y);
+        }
+
+	}
+
+	product_Offer.onchange = function() {
+	child_Offer.length=1;
+	var z = L1_productFamily[product_Family.value][this.value];
+        for (var i = 0; i < z.length; i++) {
+            child_Offer.options[child_Offer.options.length] = new Option(z[i], z[i]);
+        }
+
+	}
+}
+
+	//3. validate function
+	function validate_productOffer() {
+		var val = $("#productOffer").val();
+		if (val == '') {
+			$("#productOfferError").show();
+			$("#productOfferError").html("Please choose <b> Product Offer</b>");
+			$("#productOfferError").css('color', 'red');
+			productOfferError = false;
+		} else {
+			$("#productOfferError").hide();
+			productOfferError = true;
+		}
+		return productOfferError;
+	}
+	
+		function validate_productFamily() {
+		var val = $("#productFamily").val();
+		if (val == '') {
+			$("#productFamilyError").show();
+			$("#productFamilyError").html("Please choose <b> Product Family</b>");
+			$("#productFamilyError").css('color', 'red');
+			productFamilyError = false;
+		} else {
+			$("#productFamilyError").hide();
+			productFamilyError = true;
+		}
+		return productFamilyError;
+	}
+	
+	function validate_productOffer_childOffer() {
+		var val = $("#productOffer").val();
+		var val1 = $("#childOffer").val();
+		if (val == '') {
+			$("#productOfferError").show();
+			$("#productOfferError").html("Please choose <b> Product Offer</b>");
+			$("#productOfferError").css('color', 'red');
+			productOfferError = false;
+		} else {
+			$("#productOfferError").hide();
+			productOfferError = true;
+		}
+		return productOfferError;
+	}
+	
+	
+
+	function validate_testcaseid() {
+		var val = $("#testcaseid").val();
+		var exp = /^[A-Za-z0-9\.\-\_]{4,40}$/;
+		if (val == '') {
+			$("#testcaseidError").show();
+			$("#testcaseidError").html("Enter <b>Test Case ID</b>");
+			$("#testcaseidError").css('color', 'red');
+			testcaseidError = false;
+		} else if (!exp.test(val)) {
+			$("#testcaseidError").show();
+			$("#testcaseidError").html("Invaild <b>Test Case ID</b>");
+			$("#testcaseidError").css('color', 'red');
+			testcaseidError = false;
+		}
+		else {
+			//ajax starts  
+			$.ajax({
+				url: 'validateCode',
+				data: { "code": val },
+				success: function(respTxt) {
+					if (respTxt != "") { //error exist
+						$("#testcaseidError").show();
+						$("#testcaseidError").html(respTxt);
+						$("#testcaseidError").css('color', 'red');
+						testcaseidError = false;
+					} else { //no error
+						$("#testcaseidError").hide();
+						testcaseidError = true;
+					}
+				}
+			});
+			//ajax end
+		}
+		return testcaseidError;
+	}
+
+	function validate_topology() {
+		var val = $("#topology").val();
+		var exp = /^[A-Z0-9\.\-]{3,12}$/;
+		if (val == '') {
+			$("#topologyError").show();
+			$("#topologyError").html("Enter <b>Topology</b>");
+			$("#topologyError").css('color', 'red');
+			topologyError = false;
+		} else if (!exp.test(val)) {
+			$("#topologyError").show();
+			$("#topologyError").html("Invaild <b>Topology</b>");
+			$("#topologyError").css('color', 'red');
+			topologyError = false;
+		}
+		else {
+			$("#topologyError").hide();
+			topologyError = true;
+		}
+		return topologyError;
+	}
+
+	function validate_ipVersion() {
+		var val = $('[name="ipVersion"]:checked').length;
+		if (val == 0) {
+			$("#ipVersionError").show();
+			$("#ipVersionError").html("Please choose one Option");
+			$("#ipVersionError").css('color', 'red');
+			ipVersionError = false;
+		} else {
+			$("#ipVersionError").hide();
+			ipVersionError = true;
+		}
+		return ipVersionError;
+	}
+
+	function validate_routingProtocol() {
+		var len = $('[name="routingProtocol"]:checked').length;
+		if (len == 0) {
+			$("#routingProtocolError").show();
+			$("#routingProtocolError").html("Please choose one Option");
+			$("#routingProtocolError").css('color', 'red');
+			routingProtocolError = false;
+		} else {
+			$("#routingProtocolError").hide();
+			routingProtocolError = true;
+		}
+		return routingProtocolError;
+	}
+
+	//4. link with action even
+	$("#productOffer").change(function() {
+		validate_productOffer();
+	})
+	$("#topology").keyup(function() {
+		$(this).val($(this).val().toUpperCase());
+		validate_topology();
+	})
+
+	$("#testcaseid").keyup(function() {
+		$(this).val($(this).val().toUpperCase());
+		validate_testcaseid();
+	})
+
+	$("[name='ipVersion']").change(function() {
+		validate_ipVersion();
+	})
+	$("[name='routingProtocol']").change(function() {
+		validate_routingProtocol();
+	})
+
+
+	//5. on form submit
+	$("#scenRegForm").submit(function() {
+		validate_productFamily();
+		validate_productOffer();
+		validate_productOffer_childOffer();
+		validate_testcaseid();
+		validate_topology();
+		validate_ipVersion();
+		validate_routingProtocol();
+
+
+		if (productFamilyError && productOfferError && topologyError
+			&& ipVersionError && routingProtocolError && testcaseidError)
+			return true; //means submit form
+		else
+			return false;//dont  submit form
+	});
+});
+</script>
+</body>
+</html>
